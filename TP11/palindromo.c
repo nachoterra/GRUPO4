@@ -9,13 +9,13 @@
 #include "palindromo.h"
 
 int palindromo (const char *str)
-{
+{s
     int resultado,i=0,j=0,cambio=0;
     char mat1 [100];
     char mat2 [100];
     if (*str == '\0')
     {
-        cambio = 2;
+        cambio = 1;
         return 0;
     }
     else
