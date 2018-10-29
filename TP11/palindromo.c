@@ -15,7 +15,7 @@ int palindromo (const char *str)
     char mat2 [100];
     if (*str == '\0')
     {
-        cambio = 1;
+        cambio = 2;
         return 0;
     }
     else
