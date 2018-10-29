@@ -1,25 +1,25 @@
 
 /* 
  * File:   palindromo.c
- * Author: nacho
  * 
- * Created on 28 de octubre de 2018, 18:17
  */
-
+#include <stdio.h>
+#include <stdlib.h>
 #include "palindromo.h"
 
-int palindromo (const char *str,int len)
-{
-	if ((*str == *(str[len-1])) && (*str != '\0'))
+int palindromo ( char *cadena,char *inver)
+{      ;
+	if ( cadena[0]=='\0' ) //caso base si es una sola letra o sin letras
 	{	
-		int res;
-		res = palindromo (str+1, len-1);
-		printf ("valido");
-		return res;
+            return 1; //valido
 	}
-	else
+	else if (cadena[0]!= inver[0]) // primera y ultima letra distintas
 	{
-		printf ("invalido");
-		return 0;
+		
+            return 0; //no valido
 	}
+        else
+        {
+            return (palindromo(cadena+1,inver-1)); //prueba toda la cadena
+        }
 }

@@ -4,30 +4,40 @@
 
 /* 
  * File:   main.c
- * Author: nacho
+ * 
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include "palindromo.h"
 
-#define MAX_CADENA 5		//Máxima cantidad de letras de la palabra a ingresar
+#define MAX_CADENA 100		//Máxima cantidad de letras de la palabra a ingresar
 #define CONVERT 32		// se define una constante para convertir a las mayusculas en minusculas
-
+#define ERROR -1
 int obtener_cadena (char cadena[MAX_CADENA]);
 
 int main(int argc, char** argv) 
 {
     
     char cadena[MAX_CADENA];
-    int valid=1;
-    while (valid)
+    int largo=1, valid;
+    
+    while (largo != ERROR)  //si hay error termina
     {
         printf("Introducir cadena:");
-        valid= obtener_cadena(cadena);
-        if (valid)
+        largo= obtener_cadena(cadena);
+        if (largo != ERROR)             //si hay un error lo imprime
         {
-            printf("%s\n", cadena);
+            printf("Ingreso a evaluar:%s\n", cadena);
+            valid= palindromo (cadena, &cadena[largo-1]); //verifica si la cadena cumple lo pedido
+            if (valid)
+            {
+                printf("La cadena es un polindromo\n");
+            }
+            else
+            {
+                printf("La cadena NO es un polindromo\n");
+            }
         }
         else
         {
@@ -63,11 +73,11 @@ int obtener_cadena (char cadena[MAX_CADENA]) // guarda las letras y numeros de l
     
     if (i== MAX_CADENA)
     {
-        return 0;
+        return ERROR;  //devuelve error si la cadena introducida supera el alrgo establecido
     }
     else
     {
-        return 1;
+        return (i); //devuelve el largo de la cadena
     }
         
     
