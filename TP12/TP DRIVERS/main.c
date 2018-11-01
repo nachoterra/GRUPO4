@@ -13,7 +13,7 @@
 
 int get_word (BITSA *);		//Funcion para obetener el caracter ASCII y controlar el programabra
 int get_int(int c);			//Convierte el caracter ASCII en un entero
-
+void consola_port (BITSA *);	//Muestra en pantalla los 8 bits de algun puerto
 
 int main (void)
 {
@@ -27,7 +27,8 @@ int main (void)
 		c = get_word(p);	//obtengo el caracter
 		if (c != ERROR)
 		{
-			display_port(&porta); 
+			display_port(&porta);
+            consola_port(&porta);
 		}
 		if (c == FIN)
 		{
@@ -85,6 +86,18 @@ int get_int (int c)
 {
 	c = c - '0';
 	return c;
+}
+
+void consola_port (BITSA *port) 
+{
+	printf ("LED 0 :%d\n",port->a0);
+	printf ("LED 1 :%d\n",port->a1);
+	printf ("LED 2 :%d\n",port->a2);
+	printf ("LED 3 :%d\n",port->a3);
+	printf ("LED 4 :%d\n",port->a4);
+	printf ("LED 5 :%d\n",port->a5);
+	printf ("LED 6 :%d\n",port->a6);
+	printf ("LED 7 :%d\n",port->a7);
 }
 
 
