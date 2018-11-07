@@ -87,8 +87,9 @@ void put_command (char* dir,char* val, char* pin, char state) //prende o apaga e
 	*			EXPORT		  *
 	***************************/
 	archivo =  fopen(EXPORT,"w");
-	fprintf(archivo,"%s", pin); 
-	fflush(archivo);	
+	//fprintf(archivo,"%s", pin); 
+	//fflush(archivo);	
+	fputs(pin,archivo);
   	fclose(archivo);
    /***************************
 	*			OUTPUT		  *
